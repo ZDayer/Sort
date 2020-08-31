@@ -18,6 +18,7 @@
 		0CF94DDC24FCD2EA004CC21C /* InsertSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF94DDB24FCD2EA004CC21C /* InsertSort.swift */; };
 		0CF94DDE24FCE495004CC21C /* ShellSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF94DDD24FCE495004CC21C /* ShellSort.swift */; };
 		0CF94DE024FD126D004CC21C /* HeapSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF94DDF24FD126D004CC21C /* HeapSort.swift */; };
+		0CF94DE224FD5860004CC21C /* MergeSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF94DE124FD5860004CC21C /* MergeSort.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		0CF94DDB24FCD2EA004CC21C /* InsertSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertSort.swift; sourceTree = "<group>"; };
 		0CF94DDD24FCE495004CC21C /* ShellSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShellSort.swift; sourceTree = "<group>"; };
 		0CF94DDF24FD126D004CC21C /* HeapSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeapSort.swift; sourceTree = "<group>"; };
+		0CF94DE124FD5860004CC21C /* MergeSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeSort.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 				0CF94DDB24FCD2EA004CC21C /* InsertSort.swift */,
 				0CF94DDD24FCE495004CC21C /* ShellSort.swift */,
 				0CF94DDF24FD126D004CC21C /* HeapSort.swift */,
+				0CF94DE124FD5860004CC21C /* MergeSort.swift */,
 				0C0F60C924F65E7700ED0D8D /* Main.storyboard */,
 				0C0F60CC24F65E7D00ED0D8D /* Assets.xcassets */,
 				0C0F60CE24F65E7D00ED0D8D /* LaunchScreen.storyboard */,
@@ -159,6 +162,7 @@
 				0CF94DDA24FCC6E4004CC21C /* SelectSort.swift in Sources */,
 				0CF94DDE24FCE495004CC21C /* ShellSort.swift in Sources */,
 				0C0F60C624F65E7700ED0D8D /* SceneDelegate.swift in Sources */,
+				0CF94DE224FD5860004CC21C /* MergeSort.swift in Sources */,
 				0C28F12224F8FCE30040B6D2 /* BubbleSort.swift in Sources */,
 				0CF94DE024FD126D004CC21C /* HeapSort.swift in Sources */,
 			);
