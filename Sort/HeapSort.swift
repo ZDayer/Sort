@@ -7,26 +7,31 @@
 //
 
 import UIKit
-
+// 时间复杂度 O(nlogn)  最好, 最坏, 平均 都是
+// 不稳定的排序
+// 不适合排序个数较少的情况
 class HeapSort: NSObject {
 
     class func HeapSort(array: [Int]) -> [Int] {
         var sortArray = array
-        print(sortArray)
+
         // 构建大顶堆
         // 堆的位置是从 1 开始的
         for i in (1...sortArray.count/2).reversed() {
             HeapAdjust(array: &sortArray, start: i, end: array.count)
         }
         
-        for i in (2..<sortArray.count).reversed() {
-            let temp = sortArray[1]
-            sortArray[1] = sortArray[i]
+        for i in (1..<sortArray.count).reversed() {
+            
+            // 第一个于最后一个未排序的交换,
+            let temp = sortArray[0]
+            sortArray[0] = sortArray[i]
             sortArray[i] = temp
-            HeapAdjust(array: &sortArray, start: 1, end: i-1)
+            
+          
+            HeapAdjust(array: &sortArray, start: 1, end: i)
         }
         
-        print(sortArray)
         return sortArray
     }
     
@@ -35,19 +40,21 @@ class HeapSort: NSObject {
         // start 是元素在堆中的下标, 取值时要 -1
         var s = start
         let temp = array[s-1]
-        var j = 2*s
+        var j = 2*s  // 根结点为 s, 左孩子为 2*s, 右孩子为 2*s+1
         while j <= end {
             if j < end && array[j-1] < array[j] {
-                j += 1
+                j+=1  // 右孩子大于左孩子, 指向右孩子下标
+            } else {
+                // j 指向左孩子
             }
             if temp >= array[j-1] {
-                break
+                break  // 根结点最大
             }
-            array[start-1] = array[j-1];
+            array[s-1] = array[j-1]
             s = j
-            j *= 2
+            j*=2
         }
-        array[s-1] = temp;
+        array[s-1] = temp
     }
 }
                                
