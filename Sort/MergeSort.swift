@@ -15,6 +15,7 @@ class MergeSort: NSObject {
 //        print(array)
         let sort = MSort(array: array)
 //        print(sort)
+        _ = MSort2(array: array)
         return sort
     }
     
@@ -53,5 +54,41 @@ class MergeSort: NSObject {
             j+=1
         }
         return mArray
+    }
+    
+    
+    
+    
+    private class func MSort2(array: [Int]) -> [Int] {
+        if array.count == 1 {
+            return array
+        }
+        var k = 1;
+        while k < array.count {
+            _ = MergePass(array: array, space: k)
+            k*=2
+        }
+        
+        return [Int]()
+    }
+    
+    private class func MergePass(array: [Int], space: Int) -> [Int] {
+        var sortArray = [Int]()
+        var i = 0
+        print("============== ")
+        while i <= array.count-array.count%(2*space)-1 {  // 剩下  array.count%(2*space)
+            let min = i
+            let max = i+2*space-1
+            let m = (min+max)/2
+            let leftArray = Array(sortArray[min..<m])
+            let rightArray = Array(sortArray[m+1..<max])
+            sortArray = Merge(leftArray: leftArray, rightArray: rightArray)
+            i+=2*space
+        }
+        
+        
+        
+        
+        return sortArray
     }
 }

@@ -16,8 +16,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        let sortNumber = 100000
-        let sortRange = UInt32(10000)
+        let sortNumber = 10
+        let sortRange = UInt32(100)
         
         var array = [Int]()
         while array.count < sortNumber {
