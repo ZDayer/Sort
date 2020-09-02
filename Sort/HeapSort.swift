@@ -11,10 +11,10 @@ import UIKit
 // 不稳定的排序
 // 不适合排序个数较少的情况
 class HeapSort: NSObject {
-
+    
     class func HeapSort(array: [Int]) -> [Int] {
         var sortArray = array
-
+        
         // 构建大顶堆
         // 堆的位置是从 1 开始的
         for i in (1...sortArray.count/2).reversed() {
@@ -28,7 +28,7 @@ class HeapSort: NSObject {
             sortArray[0] = sortArray[i]
             sortArray[i] = temp
             
-          
+            
             HeapAdjust(array: &sortArray, start: 1, end: i)
         }
         
@@ -56,5 +56,52 @@ class HeapSort: NSObject {
         }
         array[s-1] = temp
     }
+    
+    
+    
+    
+    
+    class func HeapSortSmall(array: [Int]) -> [Int] {
+        var sortArray = array
+        // 构建大顶堆
+        // 堆的位置是从 1 开始的
+        for i in (1...sortArray.count/2).reversed() {
+            HeadAdjustSmall(array: &sortArray, start: i, end: array.count)
+        }
+        
+        for i in (1..<sortArray.count).reversed() {
+            
+            // 第一个于最后一个未排序的交换,
+            let temp = sortArray[0]
+            sortArray[0] = sortArray[i]
+            sortArray[i] = temp
+            
+            
+            HeadAdjustSmall(array: &sortArray, start: 1, end: i)
+        }
+        
+        return sortArray
+    }
+    
+    // 小顶堆
+    class func HeadAdjustSmall(array: inout [Int], start: Int, end: Int) {
+        var s = start
+        let temp = array[s-1]
+        var j = 2*s
+        while j <= end {
+            if j < end && array[j-1] > array[j] {
+                j+=1
+            }
+            if temp <= array[j-1] {
+                break
+            }
+            array[s-1] = array[j-1]
+            s = j
+            j*=2
+        }
+        array[s-1] = temp
+    }
+    
+    
 }
                                

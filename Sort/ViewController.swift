@@ -16,8 +16,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        let sortNumber = 10
-        let sortRange = UInt32(sortNumber)
+        let sortNumber = 100000
+        let sortRange = UInt32(10000)
         
         var array = [Int]()
         while array.count < sortNumber {
@@ -49,29 +49,40 @@ class ViewController: UIViewController {
 //        time = timeBegin(state: false)
 //        print(time as Any)
         
-        // 插入
-        _ = timeBegin(state: true)
-        _ = InsertSort.InsertSort(array: array)
-        time = timeBegin(state: false)
-        print(time as Any)
+//         插入
+//        _ = timeBegin(state: true)
+//        _ = InsertSort.InsertSort(array: array)
+//        time = timeBegin(state: false)
+//        print(time as Any)
         
         
+        // 希尔
         _ = timeBegin(state: true)
         _ = ShellSort.ShellSort(array: array)
         time = timeBegin(state: false)
         print(time as Any)
         
         
-        
+        // 堆 大顶堆
         _ = timeBegin(state: true)
         _ = HeapSort.HeapSort(array: array)
         time = timeBegin(state: false)
         print(time as Any)
         
+        
+        // 堆 小顶堆
+        _ = timeBegin(state: true)
+        _ = HeapSort.HeapSortSmall(array: array)
+        time = timeBegin(state: false)
+        print(time as Any)
+        
+        
+        // 归并
         _ = timeBegin(state: true)
         _ = MergeSort.MergeSort(array: array)
         time = timeBegin(state: false)
         print(time as Any)
+        
     }
 
     
