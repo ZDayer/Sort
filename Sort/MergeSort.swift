@@ -12,13 +12,14 @@ import UIKit
 // 稳定算法
 class MergeSort: NSObject {
     class func MergeSort(array: [Int]) -> [Int] {
-//        print(array)
         let sort = MSort(array: array)
-//        print(sort)
-        _ = MSort2(array: array)
         return sort
     }
     
+    class func MergeSort2(array: [Int]) -> [Int] {
+        let sort = MSort2(array: array)
+        return sort
+    }
     
     // 递归解法
     private class func MSort(array: [Int]) -> [Int] {
@@ -58,37 +59,65 @@ class MergeSort: NSObject {
     
     
     
-    
+    // 迭代解法
     private class func MSort2(array: [Int]) -> [Int] {
         if array.count == 1 {
             return array
         }
         var k = 1;
-        while k < array.count {
-            _ = MergePass(array: array, space: k)
+        var sortArray = array
+        while k < sortArray.count {
+            _ = MergePass(array: &sortArray, space: k)
             k*=2
         }
-        
-        return [Int]()
+        return sortArray
     }
     
-    private class func MergePass(array: [Int], space: Int) -> [Int] {
-        var sortArray = [Int]()
+    private class func MergePass(array: inout [Int], space: Int) {
         var i = 0
-        print("============== ")
         while i <= array.count-array.count%(2*space)-1 {  // 剩下  array.count%(2*space)
             let min = i
             let max = i+2*space-1
-            let m = (min+max)/2
-            let leftArray = Array(sortArray[min..<m])
-            let rightArray = Array(sortArray[m+1..<max])
-            sortArray = Merge(leftArray: leftArray, rightArray: rightArray)
+            Merge2(array: &array, start: min, middle: (min+max)/2, end: max)
             i+=2*space
         }
         
-        
-        
-        
-        return sortArray
+        if 2*space > array.count {
+            Merge2(array: &array, start: 0, middle: space-1, end: array.count-1)
+        } else if array.count%(2*space) != 0 {
+            let middle = array.count-array.count%(2*space)-1
+            let min = middle-2*space+1
+            Merge2(array: &array, start: min, middle: middle, end: array.count-1)
+        } 
     }
+    
+    
+    private class func Merge2(array: inout [Int], start: Int, middle: Int, end: Int){
+        var index = start
+        let leftArray = Array(array[start...middle])
+        let rightArray = Array(array[middle+1...end])
+        var i = 0
+        var j = 0
+        while i < leftArray.count && j < rightArray.count {
+            if leftArray[i] < rightArray[j] {
+                array[index] = leftArray[i]
+                i+=1
+            } else {
+                array[index] = rightArray[j]
+                j+=1
+            }
+            index+=1
+        }
+        while i < leftArray.count {
+            array[index] = leftArray[i]
+            i+=1
+            index+=1
+        }
+        while j < rightArray.count {
+            array[index] = rightArray[j]
+            j+=1
+            index+=1
+        }
+    }
+    
 }
