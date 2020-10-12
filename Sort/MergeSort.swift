@@ -23,7 +23,7 @@ class MergeSort: NSObject {
     
     // 递归解法
     private class func MSort(array: [Int]) -> [Int] {
-        if array.count == 1 {
+        if array.count <= 1 {
             return array
         }
         let m = array.count/2
@@ -32,7 +32,7 @@ class MergeSort: NSObject {
         return Merge(leftArray: leftArray, rightArray: rightArray)
     }
     
-    
+    // leftArray, rightArray 都是排好序的 
     private class func Merge(leftArray: [Int], rightArray: [Int]) -> [Int] {
         var i = 0
         var j = 0
@@ -61,7 +61,7 @@ class MergeSort: NSObject {
     
     // 迭代解法
     private class func MSort2(array: [Int]) -> [Int] {
-        if array.count == 1 {
+        if array.count <= 1 {
             return array
         }
         var k = 1;
@@ -74,7 +74,7 @@ class MergeSort: NSObject {
     }
     
     private class func MergePass(array: inout [Int], space: Int) {
-        var i = 0
+        var i = 0 // 虚拟分组起始下标
         while i <= array.count-array.count%(2*space)-1 {  // 剩下  array.count%(2*space)
             let min = i
             let max = i+2*space-1

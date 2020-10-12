@@ -28,4 +28,26 @@ class InsertSort: NSObject {
         }
         return sortArray
     }
+    
+    func insertsortmethod(array: [Int]) -> [Int] {
+        if array.count < 2  {
+            return array
+        }
+        var sortarray = array
+        for i in 1..<sortarray.count {
+            if sortarray[i-1] > sortarray[i] {
+                let temp = sortarray[i]
+                var j = i-1
+                // 循环查找该插入的位置
+                while j >= 0 && sortarray[j] > temp {
+                    sortarray[j+1] = sortarray[j] // 第一次的循环  j+1 = i, 将 sortarray[i]  的值覆盖, 保留在 temp 中
+                    j -= 1
+                }
+                // j+1 的值已经向后移动到 j+2 中
+                sortarray[j+1] = temp
+            }
+        }
+        
+        return sortarray
+    }
 }

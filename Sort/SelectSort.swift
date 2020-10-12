@@ -29,4 +29,24 @@ class SelectSort: NSObject {
         }
         return sortArray
     }
+    
+    func selectsortmethod(array: [Int]) -> [Int] {
+        var sortarray = array
+        for i in 0..<sortarray.count {
+            var min = i
+            for j in i+1..<sortarray.count {
+                if sortarray[min] > sortarray[j] {
+                    min = j // 找到最小的
+                }
+            }
+            // 交换最小的到最前面
+            if i != min {
+                let temp = sortarray[i]
+                sortarray[i] = sortarray[min]
+                sortarray[min] = temp
+            }
+        }
+        return sortarray
+    }
+    
 }

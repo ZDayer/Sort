@@ -37,7 +37,7 @@ class HeapSort: NSObject {
     
     class func HeapAdjust(array: inout [Int], start: Int, end: Int)  {
         // 实际:  在 HeapSort() 函数中, 是遍历调整, 从最后一个子结点(或最后一个非叶子结点)开始, 只要判断 根、左、右结点的大小就可以
-        // start 是元素在堆中的下标, 取值时要 -1
+        // start 是元素在堆中的下标, 取值时要 -1, array 是从 0 开始的
         var s = start
         let temp = array[s-1]
         var j = 2*s  // 根结点为 s, 左孩子为 2*s, 右孩子为 2*s+1
@@ -50,8 +50,8 @@ class HeapSort: NSObject {
             if temp >= array[j-1] {
                 break  // 根结点最大
             }
-            array[s-1] = array[j-1]
-            s = j
+            array[s-1] = array[j-1] // 将较大值放在堆顶
+            s = j  // 改变下标, 将交换后的下标放入 s
             j*=2
         }
         array[s-1] = temp
@@ -63,7 +63,7 @@ class HeapSort: NSObject {
     
     class func HeapSortSmall(array: [Int]) -> [Int] {
         var sortArray = array
-        // 构建大顶堆
+        // 构建小顶堆
         // 堆的位置是从 1 开始的
         for i in (1...sortArray.count/2).reversed() {
             HeadAdjustSmall(array: &sortArray, start: i, end: array.count)

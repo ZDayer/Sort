@@ -9,11 +9,12 @@
 import UIKit
 // 不稳定算法
 // 时间复杂度比较复杂, 依赖于增量序列的选取
+// 使用虚拟组, 在虚拟组中用插入排序
 class ShellSort: NSObject {
 
     class func ShellSort(array: [Int]) -> [Int] {
         var sortArray = array
-        let step = getHibbardStepArr(num: sortArray.count)
+        let step = getHibbardStepArr(num: sortArray.count) // 最后间隔为 1
         for increment in step {
 //            print(increment)
             // 根据 increment 虚拟分组
@@ -36,6 +37,7 @@ class ShellSort: NSObject {
     
     // 增量序列
     // Hibbard增量序列的取法为𝐷𝑘=2^𝑘−1
+    // 1, 3, 7, 15...2^k-1
     // 最坏时间复杂度为𝑂(𝑁^3/2), 平均时间复杂度约为𝑂(𝑁^5/4)
     class func getHibbardStepArr(num: Int) -> [Int] {
         var i = 1
