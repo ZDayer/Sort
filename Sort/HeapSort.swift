@@ -42,7 +42,7 @@ class HeapSort: NSObject {
         let temp = array[s-1]
         var j = 2*s  // 根结点为 s, 左孩子为 2*s, 右孩子为 2*s+1
         while j <= end {
-            if j < end && array[j-1] < array[j] {
+            if j < end && array[j-1] < array[j] { // 取值下标减1
                 j+=1  // 右孩子大于左孩子, 指向右孩子下标
             } else {
                 // j 指向左孩子
@@ -54,6 +54,7 @@ class HeapSort: NSObject {
             s = j  // 改变下标, 将交换后的下标放入 s
             j*=2
         }
+        // 如果进过 while 循环, s的值已经改变
         array[s-1] = temp
     }
     
